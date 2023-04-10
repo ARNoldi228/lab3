@@ -1,0 +1,14 @@
+<launch>
+  <group ns="my_ns">
+  <arg name="change" default="new_chatter" />
+    <node name="sender" pkg="rospy_tutorials" type="listener.py" output="screen">
+     <remap from="chatter" to="$(arg change)"/>
+    </node>
+  <include file="$(find super_anatoly_study_pkg)/scripts/another.launch" >
+    <arg name="topic" value="$(arg change)" />
+  </include>
+    <node name="receiver" pkg="rospy_tutorials" type="talker.py" output="screen">
+      <remap from="chatter" to="$(arg change)"/>
+    </node>
+ </group>
+</launch>
