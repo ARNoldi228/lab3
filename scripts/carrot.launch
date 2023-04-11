@@ -1,0 +1,12 @@
+<launch>
+  <group ns="my_namespace">
+    <node name="sender" pkg="rospy_tutorials" type="listener.py" output="screen">
+     <remap from="chatter" to="new_chat"/>
+    </node>
+  <include file="$(find super_anatoly_study_pkg)/scripts/another.launch" >   
+  </include>
+    <node name="receiver" pkg="rospy_tutorials" type="talker.py" output="screen">  
+     <remap from="chatter" to="new_chat"/>   
+    </node>
+ </group>
+</launch>
